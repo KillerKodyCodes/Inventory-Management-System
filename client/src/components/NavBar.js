@@ -11,11 +11,11 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import InventoryIcon from '@mui/icons-material/Inventory';
 import { Link } from 'react-router-dom'
 
-const pages = ['Update', 'Signin', 'Signup'];
-const settings = ['Logout'];
+const pages = ['Signin', 'Signup'];
+const settings = ['Settings', 'Signout'];
 
 const NavBar = () => {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -40,9 +40,9 @@ const NavBar = () => {
         <AppBar position="static">
         <Container maxWidth="xl">
             <Toolbar disableGutters>
-            <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+            <InventoryIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
             <Typography
-                variant="h6"
+                variant="h5"
                 noWrap
                 component="a"
                 href="/"
@@ -51,12 +51,11 @@ const NavBar = () => {
                 display: { xs: 'none', md: 'flex' },
                 fontFamily: 'monospace',
                 fontWeight: 700,
-                letterSpacing: '.3rem',
                 color: 'inherit',
                 textDecoration: 'none',
                 }}
             >
-                LOGO
+                Inventory Management System
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -91,15 +90,15 @@ const NavBar = () => {
                 {pages.map((page) => (
                     <MenuItem key={page} onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">
-                        <Link style={{textDecoration: "none", color: "white"}} to={`/${page}`}>{page}</Link>
+                        <Link style={{textDecoration: "none", color: "black"}} to={`/${page}`}>{page}</Link>
                     </Typography>
                     </MenuItem>
                 ))}
                 </Menu>
             </Box>
-            <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+            <InventoryIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
             <Typography
-                variant="h5"
+                variant="h6"
                 noWrap
                 component="a"
                 href=""
@@ -109,12 +108,11 @@ const NavBar = () => {
                 flexGrow: 1,
                 fontFamily: 'monospace',
                 fontWeight: 700,
-                letterSpacing: '.3rem',
                 color: 'inherit',
                 textDecoration: 'none',
                 }}
             >
-                LOGO
+                Inventory Management System
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                 {pages.map((page) => (
@@ -131,7 +129,7 @@ const NavBar = () => {
             <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                    <Avatar alt="Manager" src="/static/images/avatar/2.jpg" />
                 </IconButton>
                 </Tooltip>
                 <Menu
@@ -150,9 +148,13 @@ const NavBar = () => {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
                 >
+                <Typography textAlign="center">User Name</Typography>   {/* name based on current user */}
+                <Typography textAlign="center">Role</Typography>        {/* role based on current user */}
                 {settings.map((setting) => (
                     <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
+                    <Typography textAlign="center">
+                        <Link style={{textDecoration: "none", color: "black"}} to={`/${setting}`}>{setting}</Link>
+                    </Typography>
                     </MenuItem>
                 ))}
                 </Menu>
